@@ -5,22 +5,26 @@
 ## Login   <chapui_s@epitech.eu>
 ## 
 ## Started on  Thu Mar  5 19:20:26 2015 chapui_s
-## Last update Thu Mar  5 19:25:15 2015 chapui_s
+## Last update Sat Mar  7 22:31:03 2015 chapui_s
 ##
 
 NAME		= lemipc
 
 SOURCE_DIR	= src/
 
-SRC		= $(SOURCE_DIR)lemipc.c
+SRC		= $(SOURCE_DIR)lemipc.c		\
+		  $(SOURCE_DIR)get_map.c	\
+		  $(SOURCE_DIR)get_sem.c	\
+		  $(SOURCE_DIR)get_msg.c	\
+		  $(SOURCE_DIR)get_args.c
 
 OBJ		= $(SRC:.c=.o)
 
-INCLUDES	= includes/
+INCLUDES	= ./include/
 
-CFLAGS		= -Wall -Wextra -I $(INCLUDES)
+CFLAGS		= -Wall -Wextra -ggdb -I $(INCLUDES)
 
-CC		= gcc
+CC		= clang
 
 RM		= rm -f
 
