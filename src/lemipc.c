@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 08:55:17 2015 chapui_s
+** Last update Sun Mar  8 09:01:15 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -39,49 +39,6 @@ void		sig_handler(int sig)
   (void)sig;
   manage_sig((t_info*)0);
   exit(0);
-}
-
-void		my_putchar(char c)
-{
-  write(1, &c, 1);
-}
-
-void		my_putnbr(int n)
-{
-  if (n >= 10)
-    my_putnbr(n / 10);
-  my_putchar((n % 10) + '0');
-}
-
-void		my_putstr(char *s)
-{
-  if (s)
-    write(1, s, strlen(s));
-}
-
-void		print_battlefield(t_info *info)
-{
-  char		val;
-  int		x;
-  int		y;
-
-  y = 0;
-  my_putstr("\033[H\033[J");
-  while (y < SIZE_Y)
-  {
-    x = 0;
-    while (x < SIZE_X)
-    {
-      val = get_battlefield(info, x, y);
-      if (val != 0)
-	my_putnbr(val);
-      else
-	my_putchar('.');
-      x += 1;
-    }
-    my_putchar('\n');
-    y += 1;
-  }
 }
 
 void		destroy(t_info *info)

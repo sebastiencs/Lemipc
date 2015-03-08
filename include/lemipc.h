@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 08:34:10 2015 chapui_s
+** Last update Sun Mar  8 09:04:49 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -25,7 +25,7 @@
 # include <signal.h>
 
 // TO RM
-int is_existing;
+//int is_existing;
 
 typedef struct	s_space
 {
@@ -82,7 +82,7 @@ typedef struct	s_func_rand
 # define KEEP_FIRST		(info.is_first && get_connected(&info))
 # define AM_I_ALIVE		(info.i_am_alive == 1 || KEEP_FIRST)
 
-#define ABS(x)	(x < 0) ? (-x) : (x)
+# define ABS(x)	(x < 0) ? (-x) : (x)
 
 int		get_info(int argc, char **argv, t_info *info);
 int		get_map(t_info *info);
@@ -109,5 +109,6 @@ int		is_enemy_still_there(t_info *info,
 int		find_enemy_and_fuck_him(t_info *info);
 int		can_i_fight(t_info *info);
 void		down_the_arms(t_info *info);
+void		print_battlefield(t_info *info);
 
 #endif /* !LEMIPC_H_ */

@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sat Mar  7 15:16:28 2015 chapui_s
-** Last update Sun Mar  8 08:47:39 2015 chapui_s
+** Last update Sun Mar  8 09:05:30 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -27,7 +27,6 @@ static int	get_existing(t_info *info)
   }
   info->is_first = 0;
   info->map = (char*)(&(info->space->map) + 1);
-  is_existing = 1;
   return (0);
 }
 
@@ -50,7 +49,6 @@ static int	get_creat(t_info *info)
   info->is_first = 1;
   info->map = (char*)(&(info->space->map) + 1);
   bzero(info->map, SIZE_MAP);
-  is_existing = 0;
   return (0);
 }
 
