@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 05:31:00 2015 chapui_s
-** Last update Sun Mar  8 07:43:23 2015 chapui_s
+** Last update Sun Mar  8 08:07:23 2015 cholet_v
 */
 
 #include "lemipc.h"
@@ -37,6 +37,8 @@ static void	move_y(t_info *info, int *x, int *y, t_enemy *asshole)
     {
       *x += 1;
     }
+    else
+      move_random(info, x, y);
   }
 }
 
@@ -60,10 +62,12 @@ void		move(t_info *info, int *x, int *y, t_enemy *asshole)
 {
   int		x_old;
   int		y_old;
+  int		ran;
 
   x_old = *x;
   y_old = *y;
-  if (ABS(*x - asshole->x) > ABS(*y - asshole->y))
+  ran = rand() % 2;
+  if (ran == 1)
   {
     move_x(info, x, y, asshole);
   }
