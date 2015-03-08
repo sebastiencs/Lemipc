@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 06:02:54 2015 chapui_s
+** Last update Sun Mar  8 06:06:03 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -316,13 +316,10 @@ int		main(int argc, char **argv)
     if (can_i_fight(&info))
     {
       find_enemy_and_fuck_him(&info);
-      // faut parler avec les autres de l'equipe et aller dans une direction
-      break ;
     }
-    break ;
+    sleep(1);
   }
-  // Ca faudra l'enlever
-  if (is_existing)
+  if (info.is_first)
   {
     msgctl(info.msg_id, IPC_RMID, (struct msqid_ds*)0);
     semctl(info.sem_id, 1, IPC_RMID);

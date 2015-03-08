@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 05:56:13 2015 chapui_s
+** Last update Sun Mar  8 06:06:34 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -18,6 +18,7 @@
 # include <sys/shm.h>
 # include <sys/sem.h>
 # include <sys/msg.h>
+# include <unistd.h>
 # include <errno.h>
 # include <time.h>
 # include <string.h>
