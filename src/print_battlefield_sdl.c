@@ -5,12 +5,12 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 17:23:44 2015 chapui_s
-** Last update Sun Mar  8 17:57:16 2015 chapui_s
+** Last update Sun Mar  8 18:09:07 2015 chapui_s
 */
 
-#include "lemipc.h"
-
 #ifdef SDL_OUTPUT
+
+# include "lemipc.h"
 
 int		clear_screen(t_info *info, SDL_Rect *pos)
 {
@@ -52,4 +52,4 @@ void		print_battlefield(t_info *info)
   SDL_Flip(info->screen);
 }
 
-#endif
+#endif /* !SDL_OUTPUT */

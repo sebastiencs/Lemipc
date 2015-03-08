@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 17:55:16 2015 chapui_s
+** Last update Sun Mar  8 18:08:09 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -59,8 +59,7 @@ typedef struct	s_info
   SDL_Surface	*player;
   Uint32	colors[5];
   Uint32	black;
-  Uint32	red;
-# endif
+# endif /* !SDL_OUTPUT */
 }		t_info;
 
 typedef struct	s_enemy
@@ -86,12 +85,12 @@ typedef struct	s_func_rand
 #  define SIZE_Y		((int)(20 * sizeof(char)))
 #  define RUN_TO_WIN		(8)
 #  define TIME_TO_SLEEP		(1000000)
-# else
+# else /* !SDL_OUTPUT */
 #  define SIZE_X		((int)(100 * sizeof(char)))
 #  define SIZE_Y		((int)(100 * sizeof(char)))
 #  define RUN_TO_WIN		(30)
 #  define TIME_TO_SLEEP		(100000)
-# endif
+# endif /* !SDL_OUTPUT */
 
 # define SIZE_MAP		(SIZE_X * SIZE_Y)
 
@@ -129,5 +128,6 @@ int		can_i_fight(t_info *info);
 void		down_the_arms(t_info *info);
 void		print_battlefield(t_info *info);
 int		set_win(t_info *info, int *nb_free);
+void		prepare_sdl(t_info *info);
 
 #endif /* !LEMIPC_H_ */

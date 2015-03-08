@@ -5,12 +5,12 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 09:00:50 2015 chapui_s
-** Last update Sun Mar  8 17:26:04 2015 chapui_s
+** Last update Sun Mar  8 18:10:11 2015 chapui_s
 */
 
-#include "lemipc.h"
-
 #ifndef SDL_OUTPUT
+
+# include "lemipc.h"
 
 static void	my_putchar(char c)
 {
@@ -55,4 +55,4 @@ void		print_battlefield(t_info *info)
   }
 }
 
-#endif
+#endif /* !SDL_OUTPUT */
