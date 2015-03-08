@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 06:59:15 2015 chapui_s
+** Last update Sun Mar  8 07:10:40 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -147,6 +147,7 @@ int		am_i_surrounded(t_info *info, int nb_attackers)
       && (id = get_battlefield(info, info->x + 1, info->y)) != 0
       && id != info->team_number)
     nb_attackers += 1;
+  printf("nb_attackers: %d\n", nb_attackers);
   return ((nb_attackers >= 2) ? (1) : (0));
 }
 
@@ -156,6 +157,7 @@ int		can_i_fight(t_info *info)
   {
     info->i_am_alive = 0;
     printf("FUCK ! They killed me ! It wasn't my war !\n");
+    set_battlefield(info, info->x, info->y, 0);
     return (0);
   }
   else if (info->i_am_alive)

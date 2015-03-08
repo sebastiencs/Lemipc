@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 05:31:00 2015 chapui_s
-** Last update Sun Mar  8 06:56:33 2015 chapui_s
+** Last update Sun Mar  8 07:01:51 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -107,6 +107,6 @@ void		move(t_info *info, int *x, int *y, t_enemy *asshole)
   }
   else
   {
-    printf("I can't move ! *Warrior is scratching his ass*\n");
+    printf("I can't move ! %d:%d *Warrior is scratching his ass*\n", *x, *y);
   }
 }
