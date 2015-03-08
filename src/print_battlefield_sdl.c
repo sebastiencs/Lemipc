@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 17:23:44 2015 chapui_s
-** Last update Sun Mar  8 23:16:24 2015 chapui_s
+** Last update Sun Mar  8 23:21:15 2015 chapui_s
 */
 
 #ifdef SDL_OUTPUT
@@ -38,7 +38,7 @@ void		print_battlefield(t_info *info)
     x = 0;
     while (x < SIZE_X)
     {
-      if ((val = get_battlefield(info, x, y)))
+      if ((val = info->map[y * SIZE_Y + x]))
       {
 	pos.x = x * 5;
 	pos.y = y * 5;
