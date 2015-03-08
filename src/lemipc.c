@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 01:05:32 2015 chapui_s
+** Last update Sun Mar  8 02:36:29 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -115,9 +115,9 @@ int		prepare_for_battle(t_info *info)
   info->i_am_alive = 1;
   place_this_spartiate(info);
 #ifdef DEBUG
-  printf("Ready to fight ! x: %d y: %d Give me wine !\n", info->x, info->y);
+  printf("Ready to fight ! x: %d y: %d Bring me wine !\n", info->x, info->y);
 #else
-  printf("Ready to fight ! Give me wine and whores !\n");
+  printf("Ready to fight ! Bring me wine and whores !\n");
 #endif
   return (0);
 }
@@ -166,6 +166,129 @@ int		can_i_fight(t_info *info)
   return (0);
 }
 
+int		get_msgq(t_info *info, int msg_id, int team_number, t_msg *msg)
+{
+  int		val;
+
+  sem_lock(info);
+  val = msgrcv(msg_id, &msg, sizeof(msg), team_number, IPC_NOWAIT);
+  sem_unlock(info);
+  return (val);
+}
+
+void		send_msgq(t_info *info, t_msg *msg)
+{
+  sem_lock(info);
+  msgsnd(info->msg_id, msg, sizeof(*msg), 0);
+  sem_unlock(info);
+}
+
+int		is_enemy_still_there(t_info *info,
+				     t_enemy *stupid_guy,
+				     char *s)
+{
+  char		val;
+  int		x;
+  int		y;
+
+  x = atoi(strtok(s, ":"));
+  y = atoi(strtok(s, ":"));
+  val = get_battlefield(info, x, y);
+  if (val != 0 && val != info->team_number)
+  {
+    stupid_guy->x = x;
+    stupid_guy->y = y;
+    return (1);
+  }
+  else
+  {
+    return (0);
+  }
+}
+
+int		listen_brothers(t_info *info,
+				t_enemy *stupid_guy,
+				int msg_id,
+				int team_number)
+{
+  t_msg		msg;
+
+  errno = 0;
+  while (errno != ENOMSG)
+  {
+    if (!get_msgq(info, msg_id, team_number, &msg))
+    {
+      if (is_enemy_still_there(info, stupid_guy, &(msg.str[0])))
+      {
+	send_msgq(info, &msg);
+	return (1);
+      }
+    }
+    else
+      return (0);
+  }
+  return (0);
+}
+
+int		scan_map(t_info *info,
+			 t_enemy *stupid_guy,
+			 int team_number)
+{
+  char		val;
+  int		x;
+  int		y;
+
+  y = 0;
+  while (y < SIZE_Y)
+  {
+    x = 0;
+    while (x < SIZE_X)
+    {
+      val = get_battlefield(info, x, y);
+      if (val != 0 && val != team_number)
+      {
+	stupid_guy->x = x;
+	stupid_guy->y = y;
+	return (1);
+      }
+      x += 1;
+    }
+    y += 1;
+  }
+  return (0);
+}
+
+int		find_enemy(t_info *info, t_enemy *stupid_guy)
+{
+  if (listen_brothers(info, stupid_guy, info->msg_id, info->team_number))
+  {
+    return (1);
+  }
+  else if (scan_map(info, stupid_guy, info->team_number))
+  {
+    return (1);
+  }
+  else
+  {
+    return (0);
+  }
+}
+
+int		find_enemy_and_fuck_him(t_info *info)
+{
+  t_enemy	stupid_guy;
+
+  if (find_enemy(info, &stupid_guy))
+  {
+    // Bouger vers lui
+  }
+  else
+  {
+    // Bouger n'importe ou comme un golmon
+  }
+  return (0);
+}
+
 int		main(int argc, char **argv)
 {
   t_info	info;
@@ -179,6 +302,7 @@ int		main(int argc, char **argv)
   {
     if (can_i_fight(&info))
     {
+      find_enemy_and_fuck_him(&info);
       // faut parler avec les autres de l'equipe et aller dans une direction
       break ;
     }

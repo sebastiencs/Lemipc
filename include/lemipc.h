@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 01:08:46 2015 chapui_s
+** Last update Sun Mar  8 02:13:25 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -32,6 +32,12 @@ typedef struct	s_space
   char		*map;
 }		t_space;
 
+typedef struct	s_msg
+{
+  long		mtype;
+  char		str[10];
+}		t_msg;
+
 typedef struct	s_info
 {
   char		*path;
@@ -46,6 +52,12 @@ typedef struct	s_info
   int		x;
   int		y;
 }		t_info;
+
+typedef struct	s_enemy
+{
+  int		x;
+  int		y;
+}		t_enemy;
 
 # define TEAM_NUMBER_DEFAULT	(1)
 # define PATH_DEFAULT		(".")
