@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 00:13:19 2015 chapui_s
+** Last update Sun Mar  8 01:08:46 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -47,7 +47,7 @@ typedef struct	s_info
   int		y;
 }		t_info;
 
-# define TEAM_NUMBER_DEFAULT	(0)
+# define TEAM_NUMBER_DEFAULT	(1)
 # define PATH_DEFAULT		(".")
 
 # define ONE_MORE		(1)

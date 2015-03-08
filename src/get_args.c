@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Fri Mar  6 19:51:54 2015 chapui_s
-** Last update Fri Mar  6 20:34:52 2015 chapui_s
+** Last update Sun Mar  8 01:10:07 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -38,6 +38,11 @@ int		get_info(int argc, char **argv, t_info *info)
     else
       info->path = argv[i];
     i += 1;
+  }
+  if (info->team_number <= 0 || info->team_number > 5)
+  {
+    fprintf(stderr, "ERROR: team number >= 1 && <= 5\n");
+    return (-1);
   }
   if ((info->key = ftok(info->path, 0)) == -1)
   {
