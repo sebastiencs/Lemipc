@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 02:36:29 2015 chapui_s
+** Last update Sun Mar  8 02:40:15 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -258,6 +258,17 @@ int		scan_map(t_info *info,
   return (0);
 }
 
+void		send_position_to_brothers(t_info *info,
+					  t_enemy *stupid_guy,
+					  int team_number)
+{
+  t_msg		msg;
+
+  msg.mtype = team_number;
+  sprintf(&(msg.str[0]), "%d:%d", stupid_guy->x, stupid_guy->y);
+  send_msgq(info, &msg);
+}
+
 int		find_enemy(t_info *info, t_enemy *stupid_guy)
 {
   if (listen_brothers(info, stupid_guy, info->msg_id, info->team_number))
@@ -266,6 +277,7 @@ int		find_enemy(t_info *info, t_enemy *stupid_guy)
   }
   else if (scan_map(info, stupid_guy, info->team_number))
   {
+    send_position_to_brothers(info, stupid_guy, info->team_number);
     return (1);
   }
   else
