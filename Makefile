@@ -5,7 +5,7 @@
 ## Login   <chapui_s@epitech.eu>
 ## 
 ## Started on  Thu Mar  5 19:20:26 2015 chapui_s
-## Last update Sat Mar  7 22:31:03 2015 chapui_s
+## Last update Sun Mar  8 01:05:45 2015 chapui_s
 ##
 
 NAME		= lemipc
@@ -24,7 +24,7 @@ INCLUDES	= ./include/
 
 CFLAGS		= -Wall -Wextra -ggdb -I $(INCLUDES)
 
-CC		= clang
+CC		= gcc
 
 RM		= rm -f
 

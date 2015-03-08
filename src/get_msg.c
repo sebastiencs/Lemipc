@@ -5,21 +5,30 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sat Mar  7 15:40:57 2015 chapui_s
-** Last update Sat Mar  7 21:25:10 2015 chapui_s
+** Last update Sun Mar  8 00:36:43 2015 chapui_s
 */
 
 #include "lemipc.h"
 
 static int	get_existing(t_info *info)
 {
+#ifdef DEBUG
   printf("Using msgq %d\n", info->msg_id);
-  msgctl(info->msg_id, IPC_RMID, (struct msqid_ds*)0);
+#else
+  (void)info;
+  printf("Your mother gave me this shield after I fucked her !\n");
+#endif
   return (0);
 }
 
 static int	get_creat(t_info *info)
 {
+#ifdef DEBUG
   printf("Creating msgq %d\n", info->msg_id);
+#else
+  (void)info;
+  printf("Give me a shield ! Give me a shield !\n");
+#endif
   return (0);
 }
 

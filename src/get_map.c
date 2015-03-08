@@ -5,14 +5,18 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sat Mar  7 15:16:28 2015 chapui_s
-** Last update Sat Mar  7 22:11:54 2015 chapui_s
+** Last update Sun Mar  8 00:43:43 2015 chapui_s
 */
 
 #include "lemipc.h"
 
 static int	get_existing(t_info *info)
 {
+#ifdef DEBUG
   printf("Using segment %d\n", info->shm_id);
+#else
+  printf("I won't let you die, not in this battle, not int this war\n");
+#endif
   if ((info->space = (t_space*)shmat(info->shm_id,
 				     (const void*)0,
 				     SHM_R | SHM_W))
@@ -22,13 +26,18 @@ static int	get_existing(t_info *info)
     return (-1);
   }
   info->is_first = 0;
-  shmctl(info->shm_id, IPC_RMID, NULL);
+  info->space->map = (char*)(&(info->space->map) + 1);
+  is_existing = 1;
   return (0);
 }
 
 static int	get_creat(t_info *info)
 {
+#ifdef DEBUG
   printf("Creating segment %d\n", info->shm_id);
+#else
+  printf("WAR DECLARATION !\n");
+#endif
   if ((info->space = (t_space*)shmat(info->shm_id,
 				     (const void*)0,
 				     SHM_R | SHM_W))
@@ -41,6 +50,7 @@ static int	get_creat(t_info *info)
   info->is_first = 1;
   info->space->map = (char*)(&(info->space->map) + 1);
   bzero(info->space->map, SIZE_MAP);
+  is_existing = 0;
   return (0);
 }
 

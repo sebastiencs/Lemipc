@@ -5,21 +5,30 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sat Mar  7 15:33:34 2015 chapui_s
-** Last update Sat Mar  7 22:33:25 2015 chapui_s
+** Last update Sun Mar  8 00:31:06 2015 chapui_s
 */
 
 #include "lemipc.h"
 
 static int	get_existing(t_info *info)
 {
+#ifdef DEBUG
   printf("Using semaphore %d\n", info->sem_id);
-  semctl(info->sem_id, 1, IPC_RMID);
+#else
+  printf("I already brought my sword, get out of my way bitch\n");
+#endif
+  if (info->is_first)
+    semctl(info->sem_id, 0, SETVAL, 1);
   return (0);
 }
 
 static int	get_creat(t_info *info)
 {
+#ifdef DEBUG
   printf("Creating semaphore %d\n", info->sem_id);
+#else
+  printf("This sword looks good *rip off it from a dead man and rape him*\n");
+#endif
   semctl(info->sem_id, 0, SETVAL, 1);
   return (0);
 }
