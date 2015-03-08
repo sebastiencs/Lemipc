@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 08:30:23 2015 chapui_s
-** Last update Sun Mar  8 08:52:04 2015 chapui_s
+** Last update Sun Mar  8 17:57:43 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -105,11 +105,8 @@ int		find_enemy_and_fuck_him(t_info *info)
   }
   else
   {
-    if (++nb_free >= 8)
-    {
-      set_connected(info, -(get_connected(info)));
-      info->i_am_alive = 0;
-    }
+    if (set_win(info, &nb_free))
+      ;
     else
     {
       sem_lock(info);

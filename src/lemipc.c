@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 17:34:29 2015 chapui_s
+** Last update Sun Mar  8 17:54:28 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -54,12 +54,12 @@ void		prepare_sdl(t_info *info)
   {
     fprintf(stderr, "Warning: Can't initialize SDL: %s\n", SDL_GetError());
   }
-  if (!(info->screen = SDL_SetVideoMode(400, 400, 32, SDL_HWSURFACE)))
+  if (!(info->screen = SDL_SetVideoMode(500, 500, 32, SDL_HWSURFACE)))
   {
     SDL_Quit();
   }
   if (!(info->player = SDL_CreateRGBSurface(SDL_HWSURFACE,
-					    20, 20, 32, 0, 0, 0, 0)))
+					    5, 5, 32, 0, 0, 0, 0)))
   {
     SDL_FreeSurface(info->screen);
     SDL_Quit();
@@ -98,7 +98,7 @@ int		main(int argc, char **argv)
     }
     if (info.is_first)
       print_battlefield(&info);
-    sleep(1);
+    usleep(TIME_TO_SLEEP);
   }
   destroy(&info);
   return (0);

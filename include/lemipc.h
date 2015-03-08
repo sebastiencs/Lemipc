@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 17:18:00 2015 chapui_s
+** Last update Sun Mar  8 17:55:16 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -81,8 +81,18 @@ typedef struct	s_func_rand
 # define ONE_MORE		(1)
 # define ONE_LESS		(-1)
 
-# define SIZE_X			((int)(20 * sizeof(char)))
-# define SIZE_Y			((int)(20 * sizeof(char)))
+# ifndef SDL_OUTPUT
+#  define SIZE_X		((int)(20 * sizeof(char)))
+#  define SIZE_Y		((int)(20 * sizeof(char)))
+#  define RUN_TO_WIN		(8)
+#  define TIME_TO_SLEEP		(1000000)
+# else
+#  define SIZE_X		((int)(100 * sizeof(char)))
+#  define SIZE_Y		((int)(100 * sizeof(char)))
+#  define RUN_TO_WIN		(30)
+#  define TIME_TO_SLEEP		(100000)
+# endif
+
 # define SIZE_MAP		(SIZE_X * SIZE_Y)
 
 # define SIZE_SPACE		(sizeof(int) + sizeof(char*) + SIZE_MAP)
@@ -118,5 +128,6 @@ int		find_enemy_and_fuck_him(t_info *info);
 int		can_i_fight(t_info *info);
 void		down_the_arms(t_info *info);
 void		print_battlefield(t_info *info);
+int		set_win(t_info *info, int *nb_free);
 
 #endif /* !LEMIPC_H_ */
