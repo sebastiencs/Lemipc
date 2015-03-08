@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Fri Mar  6 19:51:54 2015 chapui_s
-** Last update Sun Mar  8 01:10:07 2015 chapui_s
+** Last update Sun Mar  8 17:31:23 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -49,5 +49,6 @@ int		get_info(int argc, char **argv, t_info *info)
     fprintf(stderr, "ERROR: can't get the key: %s\n", strerror(errno));
     return (-1);
   }
+  srand(time((time_t*)0));
   return (0);
 }

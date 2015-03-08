@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 09:04:49 2015 chapui_s
+** Last update Sun Mar  8 17:18:00 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -24,8 +24,9 @@
 # include <string.h>
 # include <signal.h>
 
-// TO RM
-//int is_existing;
+# ifdef SDL_OUTPUT
+#  include <SDL/SDL.h>
+# endif /* !SDL_OUTPUT */
 
 typedef struct	s_space
 {
@@ -53,6 +54,13 @@ typedef struct	s_info
   int		x;
   int		y;
   char		*map;
+# ifdef SDL_OUTPUT
+  SDL_Surface	*screen;
+  SDL_Surface	*player;
+  Uint32	colors[5];
+  Uint32	black;
+  Uint32	red;
+# endif
 }		t_info;
 
 typedef struct	s_enemy

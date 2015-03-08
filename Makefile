@@ -5,7 +5,7 @@
 ## Login   <chapui_s@epitech.eu>
 ## 
 ## Started on  Thu Mar  5 19:20:26 2015 chapui_s
-## Last update Sun Mar  8 09:02:24 2015 chapui_s
+## Last update Sun Mar  8 17:25:37 2015 chapui_s
 ##
 
 NAME		= lemipc
@@ -27,13 +27,18 @@ SRC		= $(SOURCE_DIR)lemipc.c			\
 		  $(SOURCE_DIR)prepare_battle.c		\
 		  $(SOURCE_DIR)sem.c			\
 		  $(SOURCE_DIR)print_battlefield.c	\
+		  $(SOURCE_DIR)print_battlefield_sdl.c	\
 		  $(SOURCE_DIR)get_args.c
 
 OBJ		= $(SRC:.c=.o)
 
 INCLUDES	= ./include/
 
-CFLAGS		= -Wall -Wextra -I $(INCLUDES)
+ifdef CFLAGS
+	SDL	= -lSDL
+endif
+
+override CFLAGS	+= -Wall -Wextra $(SDL) -I $(INCLUDES)
 
 CC		= gcc
 
