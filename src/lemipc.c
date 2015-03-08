@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 07:10:40 2015 chapui_s
+** Last update Sun Mar  8 07:28:28 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -114,6 +114,8 @@ int		prepare_for_battle(t_info *info)
   set_connected(info, ONE_MORE);
   info->i_am_alive = 1;
   place_this_spartiate(info);
+  if (info->is_first)
+    printf("\033[H\033[J");
 #ifdef DEBUG
   printf("Ready to fight ! x: %d y: %d Bring me wine !\n", info->x, info->y);
 #else
@@ -147,7 +149,6 @@ int		am_i_surrounded(t_info *info, int nb_attackers)
       && (id = get_battlefield(info, info->x + 1, info->y)) != 0
       && id != info->team_number)
     nb_attackers += 1;
-  printf("nb_attackers: %d\n", nb_attackers);
   return ((nb_attackers >= 2) ? (1) : (0));
 }
 
@@ -329,6 +330,43 @@ void		sig_handler(int sig)
   exit(0);
 }
 
+void		my_putchar(char c)
+{
+  write(1, &c, 1);
+}
+
+void		my_putnbr(int n)
+{
+  if (n >= 10)
+    my_putnbr(n / 10);
+  my_putchar((n % 10) + '0');
+}
+
+void		print_battlefield(t_info *info)
+{
+  char		val;
+  int		x;
+  int		y;
+
+  y = 0;
+  printf("\033[H\033[J");
+  while (y < SIZE_Y)
+  {
+    x = 0;
+    while (x < SIZE_X)
+    {
+      val = get_battlefield(info, x, y);
+      if (val != 0)
+	my_putnbr(val);
+      else
+	my_putchar('.');
+      x += 1;
+    }
+    my_putchar('\n');
+    y += 1;
+  }
+}
+
 int		main(int argc, char **argv)
 {
   t_info	info;
@@ -347,6 +385,8 @@ int		main(int argc, char **argv)
     {
       find_enemy_and_fuck_him(&info);
     }
+    if (info.is_first)
+      print_battlefield(&info);
     sleep(1);
   }
   if (info.is_first)
