@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 07:28:28 2015 chapui_s
+** Last update Sun Mar  8 07:35:50 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -349,7 +349,7 @@ void		print_battlefield(t_info *info)
   int		y;
 
   y = 0;
-  printf("\033[H\033[J");
+  printf("\033[H\033[J\n");
   while (y < SIZE_Y)
   {
     x = 0;
