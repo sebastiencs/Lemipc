@@ -5,7 +5,7 @@
 ## Login   <chapui_s@epitech.eu>
 ## 
 ## Started on  Thu Mar  5 19:20:26 2015 chapui_s
-## Last update Sun Mar  8 08:33:14 2015 chapui_s
+## Last update Sun Mar  8 08:36:07 2015 chapui_s
 ##
 
 NAME		= lemipc
@@ -32,7 +32,7 @@ OBJ		= $(SRC:.c=.o)
 
 INCLUDES	= ./include/
 
-CFLAGS		= -Wall -Wextra -ggdb -I $(INCLUDES)
+CFLAGS		= -Wall -Wextra -I $(INCLUDES)
 
 CC		= gcc
 
