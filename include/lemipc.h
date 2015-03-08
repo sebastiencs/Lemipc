@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 06:06:34 2015 chapui_s
+** Last update Sun Mar  8 06:55:03 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -22,7 +22,7 @@
 # include <errno.h>
 # include <time.h>
 # include <string.h>
-
+# include <signal.h>
 
 // TO RM
 int is_existing;
@@ -52,6 +52,7 @@ typedef struct	s_info
   int		i_am_alive;
   int		x;
   int		y;
+  char		*map;
 }		t_info;
 
 typedef struct	s_enemy

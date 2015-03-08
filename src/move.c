@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 05:31:00 2015 chapui_s
-** Last update Sun Mar  8 06:01:54 2015 chapui_s
+** Last update Sun Mar  8 06:56:33 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -14,7 +14,7 @@ static int	is_busy(t_info *info, int x, int y)
 {
   if (x < 0 || x >= SIZE_X || y < 0 || y >= SIZE_Y)
     return (1);
-  return ((info->space->map[(y * SIZE_Y + x) % SIZE_MAP] != 0) ? (1) : (0));
+  return ((info->map[(y * SIZE_Y + x) % SIZE_MAP] != 0) ? (1) : (0));
 }
 
 void		move_random(t_info *info, int *x, int *y)
@@ -40,8 +40,8 @@ void		move_random(t_info *info, int *x, int *y)
   {
     *y += 1;
   }
-  info->space->map[(y_old * SIZE_Y + x_old) % SIZE_MAP] = 0;
-  info->space->map[(*y * SIZE_Y + *x) % SIZE_MAP] = info->team_number;
+  info->map[(y_old * SIZE_Y + x_old) % SIZE_MAP] = 0;
+  info->map[(*y * SIZE_Y + *x) % SIZE_MAP] = info->team_number;
   printf("Moving to %d:%d\n", *x, *y);
 }
 
@@ -101,8 +101,8 @@ void		move(t_info *info, int *x, int *y, t_enemy *asshole)
   }
   if (x_old != *x || y_old != *y)
   {
-    info->space->map[(y_old * SIZE_Y + x_old) % SIZE_MAP] = 0;
-    info->space->map[(*y * SIZE_Y + *x) % SIZE_MAP] = info->team_number;
+    info->map[(y_old * SIZE_Y + x_old) % SIZE_MAP] = 0;
+    info->map[(*y * SIZE_Y + *x) % SIZE_MAP] = info->team_number;
     printf("Moving to %d:%d\n", *x, *y);
   }
   else
