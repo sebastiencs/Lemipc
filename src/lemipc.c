@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 18:05:29 2015 chapui_s
+** Last update Sun Mar  8 21:42:03 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -16,9 +16,19 @@ void		manage_sig(t_info *param)
 
   if (!param && info)
   {
-    msgctl(info->msg_id, IPC_RMID, (struct msqid_ds*)0);
-    semctl(info->sem_id, 1, IPC_RMID);
-    shmctl(info->shm_id, IPC_RMID, (struct shmid_ds*)0);
+    if (info->is_first)
+    {
+      msgctl(info->msg_id, IPC_RMID, (struct msqid_ds*)0);
+      semctl(info->sem_id, 1, IPC_RMID);
+      shmctl(info->shm_id, IPC_RMID, (struct shmid_ds*)0);
+    }
+    else
+    {
+      set_connected(info, ONE_LESS);
+      sem_lock(info);
+      info->map[(info->y * SIZE_Y + info->x) % SIZE_MAP] = 0;
+      sem_unlock(info);
+    }
   }
   else
     info = param;

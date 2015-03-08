@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 08:30:23 2015 chapui_s
-** Last update Sun Mar  8 17:57:43 2015 chapui_s
+** Last update Sun Mar  8 21:59:03 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -48,7 +48,7 @@ static int	scan_map(t_info *info,
     x = 0;
     while (x < SIZE_X)
     {
-      val = get_battlefield(info, x, y);
+      val = info->map[y * SIZE_Y + x];
       if (val != 0 && val != team_number)
       {
 	stupid_guy->x = x;

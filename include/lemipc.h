@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 18:08:09 2015 chapui_s
+** Last update Sun Mar  8 21:46:38 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -88,7 +88,7 @@ typedef struct	s_func_rand
 # else /* !SDL_OUTPUT */
 #  define SIZE_X		((int)(100 * sizeof(char)))
 #  define SIZE_Y		((int)(100 * sizeof(char)))
-#  define RUN_TO_WIN		(30)
+#  define RUN_TO_WIN		(100)
 #  define TIME_TO_SLEEP		(100000)
 # endif /* !SDL_OUTPUT */
 
@@ -96,7 +96,7 @@ typedef struct	s_func_rand
 
 # define SIZE_SPACE		(sizeof(int) + sizeof(char*) + SIZE_MAP)
 
-# define KEEP_FIRST		(info.is_first && get_connected(&info))
+# define KEEP_FIRST		(info.is_first && info.space->nb_connected)
 # define AM_I_ALIVE		(info.i_am_alive == 1 || KEEP_FIRST)
 
 # define ABS(x)	(x < 0) ? (-x) : (x)
