@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 02:48:58 2015 chapui_s
+** Last update Sun Mar  8 06:02:54 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -292,13 +292,12 @@ int		find_enemy_and_fuck_him(t_info *info)
 
   if (find_enemy(info, &stupid_guy))
   {
-    // Bouger vers cet enculé
-    printf("J'ai trouver un enculé\n");
+    printf("I found an asshole to kick\n");
+    move(info, &(info->x), &(info->y), &stupid_guy);
   }
   else
   {
-    // Bouger n'importe ou comme un golmon
-    printf("Je bouge comme un golmon\n");
+    move_random(info, &(info->x), &(info->y));
   }
   return (0);
 }

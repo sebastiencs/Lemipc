@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 05:42:44 2015 chapui_s
+** Last update Sun Mar  8 05:56:13 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -81,5 +81,6 @@ int		get_map(t_info *info);
 int		get_sem(t_info *info);
 int		get_msg(t_info *info);
 void		move(t_info *info, int *x, int *y, t_enemy *asshole);
+void		move_random(t_info *info, int *x, int *y);
 
 #endif /* !LEMIPC_H_ */
