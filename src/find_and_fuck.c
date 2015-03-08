@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 08:30:23 2015 chapui_s
-** Last update Sun Mar  8 08:31:06 2015 chapui_s
+** Last update Sun Mar  8 08:52:04 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -93,6 +93,7 @@ static int	find_enemy(t_info *info, t_enemy *stupid_guy)
 int		find_enemy_and_fuck_him(t_info *info)
 {
   t_enemy	stupid_guy;
+  static int	nb_free = 0;
 
   if (find_enemy(info, &stupid_guy))
   {
@@ -100,12 +101,21 @@ int		find_enemy_and_fuck_him(t_info *info)
     sem_lock(info);
     move(info, &(info->x), &(info->y), &stupid_guy);
     sem_unlock(info);
+    nb_free = 0;
   }
   else
   {
-    sem_lock(info);
-    move_random(info, &(info->x), &(info->y));
-    sem_unlock(info);
+    if (++nb_free >= 8)
+    {
+      set_connected(info, -(get_connected(info)));
+      info->i_am_alive = 0;
+    }
+    else
+    {
+      sem_lock(info);
+      move_random(info, &(info->x), &(info->y));
+      sem_unlock(info);
+    }
   }
   return (0);
 }

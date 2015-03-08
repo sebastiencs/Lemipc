@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 08:31:30 2015 chapui_s
+** Last update Sun Mar  8 08:55:17 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -84,6 +84,16 @@ void		print_battlefield(t_info *info)
   }
 }
 
+void		destroy(t_info *info)
+{
+  if (info->is_first)
+  {
+    msgctl(info->msg_id, IPC_RMID, (struct msqid_ds*)0);
+    semctl(info->sem_id, 1, IPC_RMID);
+    shmctl(info->shm_id, IPC_RMID, (struct shmid_ds*)0);
+  }
+}
+
 int		main(int argc, char **argv)
 {
   t_info	info;
@@ -105,12 +115,6 @@ int		main(int argc, char **argv)
     if (info.is_first)
       print_battlefield(&info);
     sleep(1);
-  }
-  if (info.is_first)
-  {
-    msgctl(info.msg_id, IPC_RMID, (struct msqid_ds*)0);
-    semctl(info.sem_id, 1, IPC_RMID);
-    shmctl(info.shm_id, IPC_RMID, (struct shmid_ds*)0);
   }
   return (0);
 }
