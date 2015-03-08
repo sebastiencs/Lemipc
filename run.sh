@@ -5,7 +5,7 @@
 ## Login   <chapui_s@epitech.eu>
 ## 
 ## Started on  Sun Mar  8 21:53:41 2015 chapui_s
-## Last update Sun Mar  8 21:57:26 2015 chapui_s
+## Last update Sun Mar  8 22:32:41 2015 chapui_s
 ##
 
 i=0
@@ -15,7 +15,7 @@ if [ -f $team ] ;
 then
     echo "./run.sh team_nb"
 else
-    while (($i < 10));
+    while (($i < 50));
     do
 	./lemipc `pwd` $team &
 	i=$(expr $i + 1)

@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 09:00:50 2015 chapui_s
-** Last update Sun Mar  8 18:10:11 2015 chapui_s
+** Last update Sun Mar  8 23:12:34 2015 chapui_s
 */
 
 #ifndef SDL_OUTPUT
@@ -43,7 +43,7 @@ void		print_battlefield(t_info *info)
     x = 0;
     while (x < SIZE_X)
     {
-      val = get_battlefield(info, x, y);
+      val = info->map[y * SIZE_Y + x];
       if (val != 0)
 	my_putnbr(val);
       else

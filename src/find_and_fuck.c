@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 08:30:23 2015 chapui_s
-** Last update Sun Mar  8 21:59:03 2015 chapui_s
+** Last update Sun Mar  8 23:11:25 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -98,21 +98,13 @@ int		find_enemy_and_fuck_him(t_info *info)
   if (find_enemy(info, &stupid_guy))
   {
     printf("I found an asshole to kick\n");
-    sem_lock(info);
     move(info, &(info->x), &(info->y), &stupid_guy);
-    sem_unlock(info);
     nb_free = 0;
   }
   else
   {
-    if (set_win(info, &nb_free))
-      ;
-    else
-    {
-      sem_lock(info);
+    if (!set_win(info, &nb_free))
       move_random(info, &(info->x), &(info->y));
-      sem_unlock(info);
-    }
   }
   return (0);
 }

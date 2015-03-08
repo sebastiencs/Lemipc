@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 07:41:56 2015 chapui_s
-** Last update Sun Mar  8 07:50:26 2015 chapui_s
+** Last update Sun Mar  8 23:12:07 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -69,7 +69,7 @@ void		move_random(t_info *info, int *x, int *y)
   i = rand() % 4;
   while (!(tab_func[i].func(info, x, y)))
     i = rand() % 4;
-  info->map[(y_old * SIZE_Y + x_old) % SIZE_MAP] = 0;
-  info->map[(*y * SIZE_Y + *x) % SIZE_MAP] = info->team_number;
+  set_battlefield(info, x_old, y_old, 0);
+  set_battlefield(info, *x, *y, info->team_number);
   printf("Moving to %d:%d\n", *x, *y);
 }
