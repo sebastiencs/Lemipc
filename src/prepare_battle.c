@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 08:25:20 2015 chapui_s
-** Last update Sun Mar  8 08:31:33 2015 chapui_s
+** Last update Sun Mar  8 16:16:33 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -40,7 +40,6 @@ int		prepare_for_battle(t_info *info)
   {
     printf("Ouch.. They block the door :-O I can't go in !\n");
     printf("Let me go home ! *call his mother*\n");
-    down_the_arms(info);
     return (-1);
   }
   set_connected(info, ONE_MORE);

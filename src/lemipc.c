@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 09:01:15 2015 chapui_s
+** Last update Sun Mar  8 16:14:02 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -24,7 +24,7 @@ void		manage_sig(t_info *param)
 {
   static t_info *info;
 
-  if (!param)
+  if (!param && info)
   {
     msgctl(info->msg_id, IPC_RMID, (struct msqid_ds*)0);
     semctl(info->sem_id, 1, IPC_RMID);
