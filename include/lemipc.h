@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 07:50:45 2015 chapui_s
+** Last update Sun Mar  8 08:34:10 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -91,5 +91,23 @@ int		get_msg(t_info *info);
 void		move(t_info *info, int *x, int *y, t_enemy *asshole);
 void		move_random(t_info *info, int *x, int *y);
 int		is_busy(t_info *info, int x, int y);
+void		sem_lock(t_info *info);
+void		sem_unlock(t_info *info);
+void		set_connected(t_info *info, int set);
+int		get_connected(t_info *info);
+char		get_battlefield(t_info *info, int x, int y);
+void		set_battlefield(t_info *info, int x, int y, char value);
+int		prepare_for_battle(t_info *info);
+int		get_msgq(t_info *info,
+			 int msg_id,
+			 int team_number,
+			 t_msg *msg);
+void		send_msgq(t_info *info, t_msg *msg);
+int		is_enemy_still_there(t_info *info,
+				     t_enemy *stupid_guy,
+				     char *s);
+int		find_enemy_and_fuck_him(t_info *info);
+int		can_i_fight(t_info *info);
+void		down_the_arms(t_info *info);
 
 #endif /* !LEMIPC_H_ */

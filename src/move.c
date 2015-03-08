@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Sun Mar  8 05:31:00 2015 chapui_s
-** Last update Sun Mar  8 08:09:49 2015 chapui_s
+** Last update Sun Mar  8 08:14:08 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -64,10 +64,12 @@ void		move(t_info *info, int *x, int *y, t_enemy *asshole)
 {
   int		x_old;
   int		y_old;
+  int		ran;
 
   x_old = *x;
   y_old = *y;
-  if (ABS(*x - asshole->x) > ABS(*y - asshole->y))
+  ran = rand() % 2;
+  if (ran == 1)
   {
     move_x(info, x, y, asshole);
   }
