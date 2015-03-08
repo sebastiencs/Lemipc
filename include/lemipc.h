@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:27:16 2015 chapui_s
-** Last update Sun Mar  8 06:55:03 2015 chapui_s
+** Last update Sun Mar  8 07:50:45 2015 chapui_s
 */
 
 #ifndef LEMIPC_H_
@@ -61,6 +61,12 @@ typedef struct	s_enemy
   int		y;
 }		t_enemy;
 
+typedef struct	s_func_rand
+{
+  int		nb;
+  int		(*func)(t_info *info, int *x, int *y);
+}		t_func_rand;
+
 # define TEAM_NUMBER_DEFAULT	(1)
 # define PATH_DEFAULT		(".")
 
@@ -84,5 +90,6 @@ int		get_sem(t_info *info);
 int		get_msg(t_info *info);
 void		move(t_info *info, int *x, int *y, t_enemy *asshole);
 void		move_random(t_info *info, int *x, int *y);
+int		is_busy(t_info *info, int x, int y);
 
 #endif /* !LEMIPC_H_ */

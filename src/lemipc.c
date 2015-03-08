@@ -5,7 +5,7 @@
 ** Login   <chapui_s@epitech.eu>
 **
 ** Started on  Thu Mar  5 19:24:41 2015 chapui_s
-** Last update Sun Mar  8 07:35:50 2015 chapui_s
+** Last update Sun Mar  8 07:38:48 2015 chapui_s
 */
 
 #include "lemipc.h"
@@ -342,6 +342,12 @@ void		my_putnbr(int n)
   my_putchar((n % 10) + '0');
 }
 
+void		my_putstr(char *s)
+{
+  if (s)
+    write(1, s, strlen(s));
+}
+
 void		print_battlefield(t_info *info)
 {
   char		val;
@@ -349,7 +355,7 @@ void		print_battlefield(t_info *info)
   int		y;
 
   y = 0;
-  printf("\033[H\033[J\n");
+  my_putstr("\033[H\033[J");
   while (y < SIZE_Y)
   {
     x = 0;
